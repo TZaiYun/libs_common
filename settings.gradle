@@ -1,0 +1,3 @@
+include ':common_libs'
+include ':app'
+rootProject.name = "MyCommonLibsApp"
