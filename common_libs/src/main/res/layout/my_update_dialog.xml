@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="345dp"
+    android:layout_height="317dp"
+    android:paddingLeft="@dimen/size_23dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/size_20dp"
+            android:textColor="@color/color_3d3d63"
+            android:text="正在下载新版本"
+            android:textSize="@dimen/text_size_18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/size_300dp"
+        android:layout_height="292dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/update_download_bg"
+        android:paddingTop="212dp"
+        android:orientation="vertical" >
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/my_progress"
+            style="@style/NumberProgressBar_Default"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog_cancle"
+        android:layout_width="@dimen/size_40dp"
+        android:layout_height="@dimen/size_40dp"
+        android:padding="@dimen/size_8dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/download_cancel"/>
+
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/size_23dp">
+
+    <RelativeLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dip">
+
+        <include layout="@layout/back_btn" />
+
+        <LinearLayout
+            android:id="@+id/close_ll"
+            android:layout_width="@dimen/size_45dp"
+            android:layout_height="@dimen/size_45dp"
+            android:layout_marginLeft="@dimen/size_45dp"
+            android:background="@drawable/common_tab_bg">
+
+            <ImageView
+                android:layout_width="@dimen/size_15dp"
+                android:layout_height="@dimen/size_15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:scaleType="centerInside"
+                android:src="@mipmap/close_icon" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/size_10dp"
+            android:layout_toRightOf="@+id/close"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dip"
+        android:progressDrawable="@drawable/webview_pg"
+        android:visibility="gone" />
+
+    <include layout="@layout/x_webview" />
+
+</LinearLayout>
