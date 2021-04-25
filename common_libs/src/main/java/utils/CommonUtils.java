@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.LocationManager;
@@ -209,4 +210,20 @@ public class CommonUtils {
         builder.show();
     }
 
+
+    /*
+     * 获取当前程序的版本号
+     */
+    public static String getNowVersionName(Context context) {
+        // 获取packagemanager的实例
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            // getPackageName()是你当前类的包名，0代表是获取版本信息
+            PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+            return packInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
