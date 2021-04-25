@@ -5,12 +5,48 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String userNo;
     private String name;
+    private String nickName;
+    private String id;
     private String CompanyName;
+    private String deptName;
+    private String CompanyId;
     private String phone;
     private String token;
     private String headerUrl;
     private boolean isCheckPwd;
     private String pwd;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public String getCompanyId() {
+        return CompanyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        CompanyId = companyId;
+    }
 
     public boolean isCheckPwd() {
         return isCheckPwd;
