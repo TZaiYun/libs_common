@@ -9,6 +9,24 @@ public class User implements Serializable {
     private String phone;
     private String token;
     private String headerUrl;
+    private String isCheckPwd;
+    private String pwd;
+
+    public String getIsCheckPwd() {
+        return isCheckPwd;
+    }
+
+    public void setIsCheckPwd(String isCheckPwd) {
+        this.isCheckPwd = isCheckPwd;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
     public String getToken() {
         return token;
