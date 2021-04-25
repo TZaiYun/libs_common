@@ -4,12 +4,11 @@ import android.app.Application;
 
 import androidx.multidex.MultiDex;
 
-import com.blankj.utilcode.util.NetworkUtils;
+import com.blankj.utilcode.util.Utils;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
 import utils.CommonUtils;
-import utils.Utils;
 
 /**
  * 要想使用BaseApplication，必须在组件中实现自己的Application，并且继承BaseApplication；
@@ -37,6 +36,6 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
         Logger.init("pattern").logLevel(LogLevel.FULL);
         CommonUtils.init(this);
-        com.blankj.utilcode.util.Utils.init(this);
+        Utils.init(this);
     }
 }
