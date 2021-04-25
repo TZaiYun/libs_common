@@ -9,15 +9,15 @@ public class User implements Serializable {
     private String phone;
     private String token;
     private String headerUrl;
-    private String isCheckPwd;
+    private boolean isCheckPwd;
     private String pwd;
 
-    public String getIsCheckPwd() {
+    public boolean isCheckPwd() {
         return isCheckPwd;
     }
 
-    public void setIsCheckPwd(String isCheckPwd) {
-        this.isCheckPwd = isCheckPwd;
+    public void setCheckPwd(boolean checkPwd) {
+        isCheckPwd = checkPwd;
     }
 
     public String getPwd() {
