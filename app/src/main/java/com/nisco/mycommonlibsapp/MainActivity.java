@@ -10,14 +10,19 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.google.gson.Gson;
 import com.zzhoujay.richtext.RichText;
+
+import java.io.IOException;
 
 import activity.base.BaseActivity;
 import bean.User;
+import constant.CommonConstants;
 import data.source.RemoteCommonDataSource;
 import http.InfoCallback;
 import utils.CommonUtils;
 import utils.PermissionsChecker;
+import utils.SharedPreferenceUtil;
 import utils.TextUtil;
 
 public class MainActivity extends BaseActivity {
