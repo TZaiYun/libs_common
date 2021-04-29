@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.nisco.common_libs.R;
 
+import utils.StatusBarUtil;
 import utils.ViewManager;
 
 
@@ -32,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
 		this.initViews();
 		this.initActivity(savedInstanceState);
 		ViewManager.getInstance().addActivity(this);
+		setStatusBar(R.color.transparent);
 	}
 
 	@Override
@@ -130,4 +133,18 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
 		finish();
 	}
 
+
+	public void setStatusBar(int colorId) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (isUseFullScreenMode()) {
+//                StatusBarUtil.transparencyBar(this);
+//            } else {
+			StatusBarUtil.setStatusBarColor(this, colorId);
+//            }
+
+//            if (isUseBlackFontWithStatusBar()) {
+			StatusBarUtil.setLightStatusBar(getWindow(), true, true);
+//            }
+		}
+	}
 }
