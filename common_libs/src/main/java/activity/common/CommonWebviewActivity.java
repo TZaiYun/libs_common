@@ -213,6 +213,11 @@ public class CommonWebviewActivity extends BaseActivity {
                 FileUtils.downLoadOpenFile(mContext, url, fileName);
             }
         }
+
+        @JavascriptInterface //关闭当前页
+        public void finishCurrentPage() {
+            finish();
+        }
     }
 
     private void showCustomWebChromeClient() {
