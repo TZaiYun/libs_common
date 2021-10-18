@@ -32,7 +32,7 @@ public class FileUtils {
     public static void openFile(Context context, File file) {
         Uri uri = null;
         if (Build.VERSION.SDK_INT >= 24) {
-            uri = FileProvider.getUriForFile(context, "com.nisco.family.fileprovider", file);
+            uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".fileprovider", file);
         } else {
             uri = Uri.fromFile(file);
         }
