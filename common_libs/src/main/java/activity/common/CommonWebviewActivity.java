@@ -26,7 +26,9 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ import com.huawei.hms.hmsscankit.ScanUtil;
 import com.huawei.hms.ml.scan.HmsScan;
 import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions;
 import com.nisco.common_libs.R;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
@@ -78,6 +81,7 @@ public class CommonWebviewActivity extends BaseActivity {
     private ProgressBar pg1;
     private boolean isvideo = false; // 是否是录像
     private TextView mTitleTv;
+    private RelativeLayout mMoreRl;
 
     private ValueCallback<Uri> uploadFile;//定义接受返回值
     private ValueCallback<Uri[]> uploadFiles;
@@ -100,6 +104,9 @@ public class CommonWebviewActivity extends BaseActivity {
         pg1 = (ProgressBar) findViewById(R.id.progressBar1);
         mWebView = (X5WebView) findViewById(R.id.webView);
         mTitleTv = findViewById(R.id.title);
+        mMoreRl = (RelativeLayout) findViewById(R.id.more_rl);
+
+        mMoreRl.setOnClickListener(this);
     }
 
     @Override
@@ -171,6 +178,10 @@ public class CommonWebviewActivity extends BaseActivity {
         super.onClick(v);
         if (v.getId() == R.id.close_ll) {
             finish();
+        } else if (v.getId() == R.id.more_rl) {
+            if (null != mWebView) {
+                showMoreDialog();
+            }
         }
     }
 
@@ -181,6 +192,27 @@ public class CommonWebviewActivity extends BaseActivity {
         mWebView.loadUrl(loadUrl, map);
         showCustomWebChromeClient();
         mWebView.addJavascriptInterface(new JavascriptCall(), "android");
+    }
+
+    // 更多按钮弹框
+    private void showMoreDialog() {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View contentview = inflater.inflate(R.layout.popup_more_layout, null);
+        TextView clearTv = contentview.findViewById(R.id.clear_tv);
+        PopupWindow popupWindow = new PopupWindow(contentview, LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        popupWindow.setOutsideTouchable(true);
+
+        clearTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QbSdk.clearAllWebViewCache(mContext, true);
+                popupWindow.dismiss();
+                finish();
+            }
+        });
+
+        popupWindow.showAsDropDown(mMoreRl);
     }
 
     private class JavascriptCall {

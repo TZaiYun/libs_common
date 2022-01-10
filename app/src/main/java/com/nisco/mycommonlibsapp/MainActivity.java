@@ -16,6 +16,7 @@ import com.zzhoujay.richtext.RichText;
 import java.io.IOException;
 
 import activity.base.BaseActivity;
+import activity.common.CommonWebviewActivity;
 import bean.User;
 import constant.CommonConstants;
 import data.source.RemoteCommonDataSource;
@@ -42,7 +43,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        mToastTv = (TextView) findViewById(R.id.toast_tv);
 
+        mToastTv.setOnClickListener(this);
     }
 
     @Override
@@ -55,10 +58,17 @@ public class MainActivity extends BaseActivity {
         } else {
 
         }
-
-
     }
 
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        if (v.getId() == R.id.toast_tv){
+            Bundle bundle = new Bundle();
+            bundle.putString("url", "https://www.baidu.com/");
+            pageJumpResultActivity(mContext, CommonWebviewActivity.class, bundle);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

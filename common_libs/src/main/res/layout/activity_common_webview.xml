@@ -43,6 +43,25 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
+        <RelativeLayout
+            android:id="@+id/more_rl"
+            android:layout_width="@dimen/size_45dp"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/size_10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/clear_cache"
+                android:layout_width="@dimen/size_25dp"
+                android:layout_height="@dimen/size_25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                android:src="@mipmap/more_icon" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <ProgressBar
