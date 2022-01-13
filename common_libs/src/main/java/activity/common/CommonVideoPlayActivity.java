@@ -13,7 +13,9 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -311,8 +313,24 @@ public class CommonVideoPlayActivity extends BaseActivity {
                 FileUtils.downLoadOpenFile(mContext, url, fileName);
             }
         }
+
+        @JavascriptInterface //横竖屏切换
+        public void changeScreen() {
+            changeScreenOrientation();
+        }
+
     }
 
+    /**
+     * 横竖屏切换
+     */
+    public void changeScreenOrientation() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
 
     /**
      * 选择文件及拍照

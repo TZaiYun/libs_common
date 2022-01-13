@@ -10,7 +10,9 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -249,6 +251,23 @@ public class CommonWebviewActivity extends BaseActivity {
         @JavascriptInterface //关闭当前页
         public void finishCurrentPage() {
             finish();
+        }
+
+        @JavascriptInterface //横竖屏切换
+        public void changeScreen() {
+            changeScreenOrientation();
+        }
+
+    }
+
+    /**
+     * 横竖屏切换
+     */
+    public void changeScreenOrientation() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
 
